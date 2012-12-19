@@ -1,0 +1,33 @@
+
+<div class='navbar-inner'>
+  <div class='width-980 clearfix'>
+    <a class='brand' href='#/home'>Projectionable</a>
+    
+    <ul class='nav pull-right'>
+      <li class="<%= window.location.hash === '#/home' ? 'active' : '' %>">
+        <a href='#/home'>Home</a>
+      </li>
+      <% if (typeof session !== 'undefined') { %>
+        <% if (typeof session.id !== 'undefined' && session.id > 0) { %>
+        <li class="<%= window.location.hash.substr(0, '#/projects'.length) === '#/projects' ? 'active' : '' %>">
+          <a href="#/projects">Projects</a>
+        </li>
+        <li class="<%= window.location.hash === '#/settings' ? 'active' : '' %>">
+          <a href="#/settings">Settings</a>
+        </li>
+        <li class="<%= window.location.hash === '#/signout' ? 'active' : '' %>">
+          <a href="#/signout">Sign Out</a>
+        </li>
+        <% } else { %>
+        <li class="<%= window.location.hash === '#/signup' ? 'active' : '' %>">
+          <a href="#/signup">Sign Up</a>
+        </li>
+        <li class="<%= window.location.hash === '#/signin' ? 'active' : '' %>">
+          <a href="#/signin">Sign In</a>
+        </li>
+        <% } %>
+      <% } %>
+    </ul>
+  </div>
+
+</div>
