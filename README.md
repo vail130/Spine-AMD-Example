@@ -116,5 +116,8 @@ I'll refer to your project directory as ~ from now on in file paths. If you incl
 ```
 The second block uses yeoman to build Spine. The only problem is that you have to run `yeoman build` to have access to that script. Alternatively, you can enter ~/app/components/spine/src and run the following command to build the .coffee files into one, which will give you the Spine build for your test server.
 
+```shell
 $ cat spine.coffee list.coffee manager.coffee route.coffee relation.coffee ajax.coffee local.coffee > spine-build.coffee
+```
+
  
