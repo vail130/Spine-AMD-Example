@@ -4,32 +4,56 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title></title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title></title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width">
 
-  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-  
-  <link rel="stylesheet" href="styles/main.css">
-  <script src="scripts/vendor/modernizr.min.js"></script>
+
+<link rel="stylesheet" href="styles/main.css">
+<script src="scripts/vendor/modernizr.min.js"></script>
 </head>
 <body>
-  <div id="application"></div>
+<div id="application"></div>
 
-  <!--[if lt IE 7]>
-      <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
-  <![endif]-->
+<!--[if lt IE 7]>
+    <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+<![endif]-->
 
-  <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-  <script>
-      var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
-      (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-      g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-      s.parentNode.insertBefore(g,s)}(document,'script'));
-  </script>
+<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+<script>
+  var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+  (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+  g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+  s.parentNode.insertBefore(g,s)}(document,'script'));
+  
+  var sessionData = [
+    {
+      id: 1
+    }
+  ];
+  
+  window.localStorage.setItem('Session', JSON.stringify(sessionData));
+  
+  var accountData = [
+    {
+      id: 1,
+      first_name: 'Foo',
+      last_name: 'Bar',
+      email: 'foo@bar.com',
+      type: 'user',
+      status: 'active',
+      date_created: '2012-12-12T12:12:12.12Z',
+      date_updated: '2012-12-12T12:12:12.12Z'
+    }
+  ];
+  
+  window.localStorage.setItem('Account', JSON.stringify(accountData));
+  
+</script>
 
 <!-- build:js scripts/amd-app.js -->
 <script data-main="scripts/main" src="scripts/vendor/require.js"></script>

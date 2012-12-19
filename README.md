@@ -71,13 +71,13 @@ $ yeoman server
 
 ## Build Spine
 
-Enter ~/app/components/spine/src and run the following command to build the .coffee files into one, which will give you the Spine build for your test server.
+Enter `~/app/components/spine/src` and run the following command to build the .coffee files into one, which will give you the Spine build for your test server.
 
 ```shell
 $ cat spine.coffee list.coffee manager.coffee route.coffee relation.coffee ajax.coffee local.coffee > spine-build.coffee
 ```
 
-If you included Twitter Bootstrap JS plugins with yeoman, then you'll see the following block of HTML in ~/app/index.html. I prefer to just download one file from [Twitter Bootstrap](http://twitter.github.com/bootstrap/) that contains what I want and include it using Require, so I usually remove this code.
+If you included Twitter Bootstrap JS plugins with yeoman, then you'll see the following block of HTML in `~/app/index.html`. I prefer to just download one file from [Twitter Bootstrap](http://twitter.github.com/bootstrap/) that contains what I want and include it using Require, so I usually remove this code.
 
 ```html
 <!-- build:js scripts/plugins.js -->
@@ -116,10 +116,10 @@ The good thing about the code above is that it demonstrates how to use Yeoman's 
 I downloaded [Font Awesome](http://fortawesome.github.com/Font-Awesome/) as a zip archive (I'll refer to this zip archive as ~FA), and I copied the contents of the `~FA/font` to `~/app/fonts`. `~/app/styles/compass_twitter_bootstrap/_font-awesome.scss` is an old version of Font Awesome, so follow these steps:
 
 1. Open `~FA/sass/font-awesome.scss`.
-2. Find the last line of `~/app/styles/compass_twitter_bootstrap/_font-awesome.scss in ~FA/sass/font-awesome.scss`.
+2. Find the last line of `~/app/styles/compass_twitter_bootstrap/_font-awesome.scss` in `~FA/sass/font-awesome.scss`.
 3. Copy the rest of `~FA/sass/font-awesome.scss` into `~/app/styles/compass_twitter_bootstrap/_font-awesome.scss`.
 
-Then, in ~/Gruntfile.js, add a reference to the fonts directory:
+Then, in `~/Gruntfile.js`, add a reference to the fonts directory:
 
 ```javascript
     // compile .scss/.sass to .css using Compass
@@ -148,12 +148,22 @@ In `~/app/styles/main.scss`, change to import statement at the top of the file t
 
 In `~/app/index.html`, I generally like to have just one div with an ID unique for my application into which I insert the structure of the DOM that I need.
 
+I also put some sample localStorage data here to help with local development.
+
 ## Prepare Third Party Libraries
 
 I added [jQuery](http://jquery.com/), [Underscore](http://underscorejs.org/), [jQueryUI](http://jqueryui.com/), Bootstrap, [ES5 Shim](https://github.com/kriskowal/es5-shim), [Moment](http://momentjs.com/), [Spin](http://fgnass.github.com/spin.js/), and a [jQuery plugin for file uploads](https://github.com/blueimp/jQuery-File-Upload) to `~/app/scripts/vendor`. I also added [text.js](http://github.com/requirejs/text) to `~/app/scripts`, which will let us import files as text using Require, useful for templating.
 
 ## Set Up Application
 
+### main.coffee
+
 We're using CoffeeScript, so I converted main.js and app.js to main.coffee and app.coffee. One note of caution is to be careful of any requirements that your libraries have. As an example, the jQuery fileupload plugin requires "jquery.ui.widget" in its own code out of the box, so I had to change that reference to "jquery-ui", which is the name I used in `~/app/scripts/main.coffee`. Also, the RequireJS docs state that setting up paths and shims for a library does not actually load it, which is why `~/app/scripts/main.coffee` loads those libraries explicitly.
 
 Inside of the actual module, we instantiate the App when the document is ready and save it to the global namespace, and then start Spine's Stack (it controls the URL routing) after a master promise resolves, which we'll see in the application definition happens after all model fetching occurs.
+
+### app.coffee
+
+Notice that we pass the `el` parameter into the instantiation call to the App controller. When using Spine, for any controller that is connected to the DOM, you should always provide that element to the controller on instantiation. In general, you can achieve this goal by providing specific elements in each controller's template to pass to any controllers that will be connected to DOM elements within the parent controller's element. To see this in action. look at `~/app/scripts/views/structure.html`. You can see elements specifically set aside to provide to the Navigation and Footer controllers. #app-body is the exception here, because it will be the direct parent of the navigation-level controllers.
+
+Take note of `~/app/scripts/deployment.txt`, which is a quick, albeit hacky, way to use HTML5's localStorage to run your app locally for development purposes without having to have an API up and running. In `~/app/scripts/models/session.coffee` and `~/app/scripts/models/account.coffee`, the model either incorporates Spine's Local or Ajax extension based on the value of `~/app/scripts/deployment.txt`.

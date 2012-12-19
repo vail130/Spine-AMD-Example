@@ -34,21 +34,28 @@ define [
         if Session.first().id?
           @loadData =>
             masterDeferred.resolve()
-            if window.location.hash in ['', '#']
-              window.location.hash = '#/projects'
+            if window.location.hash in ['', '#!']
+              window.location.hash = '#!/dashboard'
         
         else
           masterDeferred.resolve()
-          if window.location.hash in ['', '#']
-            window.location.hash = '#/home'
+          if window.location.hash in ['', '#!']
+            window.location.hash = '#!/home'
     
     loadData: (callback) =>
+      #
+      # Create deferred objects for each model and set them to resolve on refresh
+      #
       accountDeferred = $.Deferred()
       Account.one 'refresh', => accountDeferred.resolve()
       
+      #
+      # Fetch each model's records here
+      #
       Account.fetch()
       
       $.when(
+        # List all deferred objects here
         accountDeferred
       ).done =>
         @navigation.render()

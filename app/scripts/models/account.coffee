@@ -1,4 +1,3 @@
-
 define [
   'spine'
   'text!deployment.txt'
@@ -14,8 +13,6 @@ define [
       "status"
       "date_created"
       "date_updated"
-      "unix_created"
-      "unix_updated"
     
     if Deployment is 'local'
       @extend Spine.Model.Local

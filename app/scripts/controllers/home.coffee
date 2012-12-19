@@ -7,11 +7,11 @@ define [
     constructor: ->
       super
       @routes
-        '/home': =>
+        '!/home': =>
           App.navigation.render()
           @render().activate()
     
-    className: 'home main-stack'
+    className: 'home'
     
     render: =>
       @html _.template homeTemplate

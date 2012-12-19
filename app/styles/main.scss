@@ -1,1 +1,42 @@
 @import "compass_twitter_bootstrap_awesome";
+@import "jquery-ui.css";
+
+#application {
+  background-color: #eee;
+  
+  #footer {
+    display: none;
+  }
+  
+  & > div {
+    @include clearfix();
+  }
+  
+  .width-980 {
+    width: 980px;
+    margin: 0 auto;
+  }
+  
+  #app-body {
+    
+    & > div {
+      display: none;
+      width: 980px;
+      margin: 0 auto;
+      min-height: 500px;
+      padding: 0 20px;
+      
+      &.active {
+        display: block;
+      }
+      
+      &.home {
+        
+      }
+      
+      &.dashboard {
+        
+      }
+    }
+  }
+}

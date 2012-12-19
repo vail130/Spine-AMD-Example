@@ -1,4 +1,3 @@
-
 define [
   'spine'
   'text!deployment.txt'

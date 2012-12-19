@@ -3,10 +3,8 @@ define [
   'underscore'
   'spine'
   'controllers/home'
-  'controllers/pricing'
-  'controllers/projects/work'
-  'controllers/settings/settings'
-], ($, _, Spine, Home, Pricing, Work, Settings) ->
+  'controllers/dashboard'
+], ($, _, Spine, Home, Dashboard) ->
   
   class Stack extends Spine.Stack
     constructor: ->
@@ -14,15 +12,5 @@ define [
     
     controllers:
       Home: Home
-      Pricing: Pricing
-      Work: Work
-      Settings: Settings
-      ###
-      Learn: Learn
-      Signup: Signup
-      Signin: Signin
-      Terms: Terms
-      Privacy: Privacy
-      ModalForm: ModalForm
-      ###
+      Dashboard: Dashboard
       
