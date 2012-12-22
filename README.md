@@ -2,7 +2,7 @@
 
 ## tl;dr
 
-This article will set up a web app using [Yeoman](http://yeoman.io), [Spine](http://spinejs.com), [CoffeeScript](http://coffeescript.org), and [Require JS](http://requirejs.org/) for [Asynchronous Module Definition (AMD)](https://github.com/amdjs/amdjs-api/wiki/AMD) and provide sample code that should be usable for another project.
+This repository walks through the process of setting up a web app using [Yeoman](http://yeoman.io), [Spine](http://spinejs.com), [CoffeeScript](http://coffeescript.org), and [Require JS](http://requirejs.org/) for [Asynchronous Module Definition (AMD)](https://github.com/amdjs/amdjs-api/wiki/AMD), and it provides sample code that should be usable for another project.
 
 ## Set Up Yeoman
 

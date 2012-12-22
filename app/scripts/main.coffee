@@ -20,7 +20,7 @@ require.config
 
   paths:
     'es5-shim': 'vendor/es5-shim.min'
-    'jquery': 'vendor/jquery/jquery.min'
+    'jquery': 'vendor/jquery.min'
     'jquery-ui': 'vendor/jquery-ui-1.9.2.min'
     'underscore': 'vendor/underscore.min'
     'spine': 'vendor/spine-build'
